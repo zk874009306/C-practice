@@ -12,7 +12,7 @@ void quick_sort(int *p, int x, int y)
     do
     {
         while ((p[i] < mid) && i < y) i++;
-        while ((p[i] > mid) && i > x) j++;
+        while ((p[j] > mid) && i > x) j++;
         if (i <= j)
             {
                 temp = p[i];
