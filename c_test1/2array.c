@@ -16,7 +16,7 @@ int main(int argc, const char *argv[])
    
     
     for(i=0;i<5;i++)
-    {
+   {
         for(j=0;j<4;j++)
         {
             array[i][j] = rand()%(m*n);
@@ -28,7 +28,7 @@ int main(int argc, const char *argv[])
     {
         for(j=0;j<4;j++)
         {
-            printf("%-5d",array[j][i]);
+            printf("%-5d",array[i][j]);
         }
         
         printf("\n");
