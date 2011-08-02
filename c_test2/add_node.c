@@ -10,10 +10,11 @@ struct student
 
 typedef	struct student STU;
 
+
 STU *create_link(int n)
 {
 	int i = 0;
-    STU *head = NULL;
+	STU *head = NULL;
 	STU *p = NULL;
 
 	head = p = malloc(sizeof(STU));
@@ -46,14 +47,64 @@ STU *create_link(int n)
 
 void print_link(STU *p)
 {
-	int counter = 0;
-    while(p != NULL)
+	while(p != NULL)
 	{
-        counter++;
-        printf("%-5d  %s\n", p->number,p->name);
-        printf("count =%-5d\n",counter);
+		printf("%-5d  %s\n", p->number,p->name);
 		p = p->next;
 	}
+}
+
+int get_num(STU *p)
+{
+	int counter = 0;
+
+	while(p != NULL)
+	{
+		counter++;
+		p = p->next;
+	}
+
+	return counter;
+}
+
+STU *add_node(STU *p)
+{
+	STU *head = p;
+	STU *p_c = NULL;
+
+	p_c = malloc(sizeof(STU));
+	if(p_c == NULL)
+	{
+		perror("malloc new");
+		exit(0);
+	}
+
+	printf("Please input number:\n");
+	scanf("%d", &p_c->number);
+	printf("input name:\n");
+	scanf("%s", p_c->name);
+	p_c->next = NULL;
+
+    if (p_c -> number < p -> number)
+    {
+        p_c -> next = p;
+        return p_c;
+    } 
+
+	while(p->next != NULL)
+	{
+		if(p->next->number > p_c->number)
+		{
+			break;
+		}
+		p = p->next;
+	}
+
+	p_c->next = p->next;
+	p->next = p_c;
+
+	return head;
+	
 }
 int main(void)
 {
@@ -62,6 +113,8 @@ int main(void)
 	STU *head = NULL;
 
 	head = create_link(10);
+	print_link(head);
+	head = add_node(head);
 	print_link(head);
 	return 0;
 }
