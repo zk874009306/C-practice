@@ -17,7 +17,7 @@ STU *create_link(int n)
 	STU *head = NULL;
 	STU *p = NULL;
 
-	head = p = malloc(sizeof(STU));
+	head = p = malloc(sizeof(STU));       //malloc:allocate memory space 
 	if(p == NULL)
 	{
 		perror("create");
@@ -84,10 +84,15 @@ STU *add_node(STU *p)
 	printf("input name:\n");
 	scanf("%s", p_c->name);
 	p_c->next = NULL;
-
+    
+    if (p == NULL)
+    {
+        printf("link empty !");  // no link (creat failed),add failed
+        return p_c;
+    }
     if (p_c -> number < p -> number)
     {
-        p_c -> next = p;
+        p_c -> next = p;     // add a node to head
         return p_c;
     } 
 
