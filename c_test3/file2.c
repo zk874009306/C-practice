@@ -58,6 +58,7 @@ FUNCTION : fwrite(str,1,strlen(str),fp);
 int main(int argc, const char *argv[])
 {
     FILE *fp = NULL;
+    FILE *f = NULL;
     
     char str[100] ="I like c program"; // indefine a string array
 
@@ -77,7 +78,9 @@ int main(int argc, const char *argv[])
 
     n = fread(r_str,1,1023,fp); // fread return when meet the end of file ,and return the item number you have read or written
     
-    r_str[n] = '\0';     
+    r_str[n] = '\0';    
+    
+    fclose(fp); // close  the file 
 /*
     i = 0;  
     while ((r_str[i] = getc(fp)) != EOF)   //if the beginning is '\0',cosider read over
@@ -87,8 +90,15 @@ int main(int argc, const char *argv[])
     r_str[i] = '\0';  */
 
     printf("%s\n",r_str);
-    
+    f = fopen("1.txt","w+");
 
-    fclose(fp); // close  the file 
+    if(f == NULL)   // open failed
+    {
+        perror("open ok");
+        exit(0);
+    }
+    
+    fwrite(r_str,1,strlen(r_str),f);
+    fclose(f);
     return 0;
 }
