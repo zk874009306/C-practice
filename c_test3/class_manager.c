@@ -57,6 +57,69 @@ void menu(void)
 
 }
 
+STU *open_flink()
+{
+  
+    STU *head;
+    STU *p;
+    FILE *fp;
+    int number;
+    char iname[20];
+
+    
+    fp = fopen("1.txt","r+");
+
+    if (fp == NULL)
+    {
+        perror("open");
+        exit(0);
+    }
+    fscanf(fp,"%d%s",&number,iname);
+    
+    if((fscanf(fp,"%d%s",&number,iname)) == EOF)
+    {
+		
+   /*     p->num = number;
+        strncpy(p->name,iname,20); */
+		return NULL;
+    }
+
+   
+    head = p = malloc(sizeof(STU));
+    
+
+    if (p == NULL)
+    {
+            perror("malloc");
+            exit(0);
+    }
+    p -> num = number;
+    strncpy(p->name,iname,20);
+    p->next = NULL; 
+
+        
+    while ((fscanf(fp,"%d%s",&number,iname)) != EOF)
+    {
+        p->next = malloc(sizeof(STU));
+            
+        if (p ==NULL)
+        {
+            perror("creat");
+            exit(0);
+        }
+        p->next->num = number;
+        strncpy(p->next->name,iname,20);
+        p = p->next;
+        p->next ->next =NULL;
+     }
+
+        fclose(fp);
+        return head;
+
+    
+
+}
+
 STU *delete_node(STU *p)
 {
     STU *head = p;
@@ -153,6 +216,8 @@ int main(int argc, const char *argv[])
     int flag = 1;
     int choice;
     STU *head = NULL;
+
+	head = open_flink();
 
     while (flag > 0)
     {
