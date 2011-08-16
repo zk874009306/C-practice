@@ -76,7 +76,7 @@ STU *open_flink()
     }
     fscanf(fp,"%d%s",&number,iname);
     
-    if((fscanf(fp,"%d%s",&number,iname)) == EOF)
+    if(fscanf(fp,"%d%s",&number,iname) == EOF)
     {
 		
    /*     p->num = number;
@@ -98,11 +98,11 @@ STU *open_flink()
     p->next = NULL; 
 
         
-    while ((fscanf(fp,"%d%s",&number,iname)) != EOF)
+    while (fscanf(fp,"%d%s",&number,iname) != EOF)
     {
         p->next = malloc(sizeof(STU));
             
-        if (p ==NULL)
+        if (p -> next == NULL)
         {
             perror("creat");
             exit(0);
@@ -110,7 +110,7 @@ STU *open_flink()
         p->next->num = number;
         strncpy(p->next->name,iname,20);
         p = p->next;
-        p->next ->next =NULL;
+        p->next ->next = NULL;
      }
 
         fclose(fp);
