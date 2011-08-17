@@ -13,6 +13,8 @@
 */
 
 fbscr_t fb_v;
+int mx;
+int my;
 int init_date(void)
 
 {
@@ -20,13 +22,14 @@ int init_date(void)
 	struct fb_var_screeninfo fb_var;
 
 	fd = open("/dev/fb0",O_RDWR);
+
 	if (fd < 0)
 	{
 		perror("open fb0");
 		exit(0);
 	}
 
-	if (ioctl(fd,FBIOGET_VSCREENINFO,&fb_var) < 0)
+	if (ioctl(fd,FBIOGET_VSCREENINFO,&fb_var) < 0)   // operate a undering device parameter in a special file  return a non-nagetive value
 	{
 		perror("inctl");
 		exit(0);
@@ -37,8 +40,7 @@ int init_date(void)
 	fb_v.w = fb_var.xres;
 	fb_v.h = fb_var.yres;
 	fb_v.bpp = fb_var.bits_per_pixel;
-	fb_v.memo = mmap(NULL,fb_v.w*fb_v.h*fb_v.bpp/8,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);
-
+	fb_v.memo = mmap(NULL,fb_v.w*fb_v.h*fb_v.bpp/8,PROT_READ|PROT_WRITE,MAP_SHARED,fd,0);  // mmap(); creat a new mapping in a virtual address space
 	if(fb_v.memo == MAP_FAILED)
 	{
 		perror("map");
