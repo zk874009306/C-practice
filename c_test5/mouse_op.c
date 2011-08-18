@@ -109,6 +109,8 @@ int get_mouse_info(int fd, mouse_event *p)
 int mouse_doing(void)
 {
     int fd = 0 ;
+	int button_release;
+	int flag = 0;
 	mouse_event m_e;
 
 	fd = open("/dev/input/mice",O_RDWR|O_NONBLOCK);
@@ -131,8 +133,48 @@ int mouse_doing(void)
 			restore_bg(mx,my);
 			mx += m_e.dx;
 			my += m_e.dy;
+
+            if(mx < 0)
+			{
+				mx = 0;
+			}
+			if(mx >(fb_v.w - C_W))
+			{
+				mx = (fb_v.w-C_W);
+			}
+
+            if(my < 0)
+			{
+				my = 0;
+			}
+			if(my >(fb_v.h - C_H))
+			{
+				my = (fb_v.h-C_H);
+			}
+
+			switch(m_e.button)
+			{
+				case 0 : if (button_release == 1)
+						 {
+						 	flag = chess_doing();
+							button_release = 0;
+						 }
+						 break;
+				case 1 : button_release = 1;break ;
+				case 2 : break;
+				case 4 : break;
+				default : break;
+			
+			}
 			draw_cursor(mx,my);
+			if (flag != 0)
+			{
+				break;
+			}
 		}
+
 	}
+	usleep(1);
+	printf("winner is player %d\n",flag);
 	return 0;
 }

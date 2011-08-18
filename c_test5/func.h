@@ -3,9 +3,14 @@
 #define _FUNC_H_
 #define STA_X   100
 #define STA_Y   40
+
 #define X_NUM   29
 #define Y_NUM   24
+
 #define space   30 
+
+#define BLACK  0x00000000
+#define WHITE  0x00ffffff
 typedef unsigned char u8_t;
 typedef unsigned int u32_t;
 typedef struct
@@ -33,6 +38,8 @@ int draw_cursor(int x, int y);
 int restore_bg(int x, int y);
 int save_bg(int x, int y);
 int mouse_doing(void);
+int chess_doing(void);
+int chess_put(int x, int y);
 
 #endif 
 

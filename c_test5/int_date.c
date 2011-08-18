@@ -15,6 +15,11 @@
 fbscr_t fb_v;
 int mx;
 int my;
+
+char player = 2;
+u32_t current_color = 0x00ffffff;
+char chess_board[X_NUM*Y_NUM];
+
 int init_date(void)
 
 {
@@ -62,8 +67,8 @@ int init_date(void)
 	} */
 	for (i = 0 ;i < fb_v.w*fb_v.h; i++)
 	{
-		if( (i%400) == 0 )
-		p[i] = 0x00ff0000;
+	//	if( (i%400) == 0 )
+		p[i] = 0x00cc9966;
 	}
 /*
 	for(i=0;i<fb_v.h;i++)

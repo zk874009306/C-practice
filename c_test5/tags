@@ -4,19 +4,28 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-BORD	mouse_op.c	4;"	d	file:
-C_H	mouse_op.c	9;"	d	file:
-C_W	mouse_op.c	8;"	d	file:
-T___	mouse_op.c	5;"	d	file:
-X___	mouse_op.c	6;"	d	file:
+BORD	mouse_op.c	10;"	d	file:
+C_H	mouse_op.c	15;"	d	file:
+C_W	mouse_op.c	14;"	d	file:
+T___	mouse_op.c	11;"	d	file:
+X___	mouse_op.c	12;"	d	file:
 bg	mouse_op.c	/^u32_t bg[C_W*C_H] = {0};$/;"	v
+chess_board	int_date.c	/^char chess_board[X_NUM*Y_NUM];$/;"	v
+chess_doing	chess_op.c	/^int chess_doing (void)$/;"	f
+chess_put	chess_op.c	/^int chess_put(int x, int y)$/;"	f
+current_color	int_date.c	/^u32_t current_color;$/;"	v
 cursor_pixel	mouse_op.c	/^static  u32_t cursor_pixel[C_W*C_H] = $/;"	v	file:
 draw_cursor	mouse_op.c	/^int draw_cursor(int x, int y)$/;"	f
 fb_circle	point.c	/^int fb_circle(int x0, int y0, int r, u32_t color)$/;"	f
 fb_line	point.c	/^int fb_line(int x1, int y1, int x2, int y2, u32_t color) $/;"	f
 fb_v	int_date.c	/^fbscr_t fb_v;$/;"	v
+get_mouse_info	mouse_op.c	/^int get_mouse_info(int fd, mouse_event *p)$/;"	f
 init_date	int_date.c	/^int init_date(void)$/;"	f
 main	main.c	/^int main(int argc, const char *argv[])$/;"	f
+mouse_doing	mouse_op.c	/^int mouse_doing(void)$/;"	f
+mx	int_date.c	/^int mx;$/;"	v
+my	int_date.c	/^int my;$/;"	v
+player	int_date.c	/^char player;$/;"	v
 print_board	print_board.c	/^void print_board(u32_t color)$/;"	f
 print_point_set	point.c	/^void print_point_set(int x, int y , u32_t color)$/;"	f
 restore_bg	mouse_op.c	/^int restore_bg(int x , int y)$/;"	f
