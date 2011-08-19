@@ -29,6 +29,7 @@ int check(int x, int y)
 		return who;
 	}
 	counter = 1;
+
 	for(i=1, j= -1; i<5; i++, j--)
 	{
 		if(chess_board[x+i+(y+j)*X_NUM] == who)
@@ -44,6 +45,33 @@ int check(int x, int y)
 	{
 		return who;
 	}
+	counter = 1;
+
+	for(i =1 ,j = 1; i < 5; i++,j++)
+	{
+		if(chess_board[x+i+(y+j)*X_NUM] == who)
+		{
+			counter++;
+		}
+	}
+	if(counter == 5)
+	{
+		return who;
+	}
+	counter = 1;
+
+	for(j = 1; j < 5; j++)
+	{
+		if (chess_board[x+(y+j)*X_NUM] == who)
+		{
+			counter++;
+		}
+	}
+	if(counter == 5)
+	{
+		return who;
+	}
+	counter = 1;
 
 	return 0;
 }
